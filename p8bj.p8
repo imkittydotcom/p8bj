@@ -68,8 +68,6 @@ end
 -->8
 -- game state
 
-test_card=card:new()
-
 -- player state
 player_money=125
 held_cards=1
