@@ -65,7 +65,8 @@ end
 -->8
 -- game state
 
--- player's hand
+-- player state
+player_money=125
 held_cards=1
 
 -- constants
@@ -86,11 +87,13 @@ function _update()
  if btnp(5) then
   held_cards=max(1,held_cards-1)
  end
+ player_money=player_money+.25
 end
 
 function _draw()
  cls(13)
  draw_player_hand()
+ draw_ui()
 end
 -->8
 -- cards
@@ -108,6 +111,15 @@ end
 function draw_card(_pos)
  vspr(0,_pos-card_offset,
       4,5)
+end
+-->8
+-- ui
+function draw_ui()
+ print("🅾️:draw ❎:discard",
+       1, 128-6)
+ money_string="money:$"..tostr(flr(player_money))
+ money_string_pixel_length=1+#money_string*3+(#money_string-1)
+ print(money_string,128-money_string_pixel_length,128-6)
 end
 __gfx__
 0000000000000000000000000000000000300000880880000ccc000000a000007700000077700000000000000000000000000000000000000000000000000000
