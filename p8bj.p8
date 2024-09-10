@@ -68,6 +68,8 @@ end
 -->8
 -- game state
 
+test_card=card:new()
+
 -- player state
 player_money=125
 held_cards=1
@@ -85,7 +87,7 @@ end
 function _update()
  -- draw card
  if btnp(4) then
-  held_cards=min(5,held_cards+1)
+  held_cards=min(6,held_cards+1)
  end
  if btnp(5) then
   held_cards=max(1,held_cards-1)
@@ -99,7 +101,21 @@ function _draw()
  draw_ui()
 end
 -->8
--- cards
+-- card object
+-- obj
+card={suit=0,value=0}
+
+function card:new(_suit,_value)
+ local o={suit=_suit,value=_value}
+ return setmetatable(o,{__index=self})
+end
+
+function card:draw(_pos)
+ vspr(0,_pos-card_offset,
+      4,5)
+end
+-->8
+-- display cards
 function draw_player_hand()
  for i=0,held_cards-1 do
   hand_width=card_size.x+held_card_offset*(held_cards-1)
