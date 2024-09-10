@@ -119,13 +119,14 @@ function card:draw(_pos)
       4,5)
  -- card corners
  vprint(self.value,_pos+vec(2))
- vprint(self.value,_pos+card_size-vec(5,7))
+ value_len=#tostr(self.value)
+ vprint(self.value,_pos+card_size-vec(1+value_len*4,7))
  -- card center
- vspr(52,_pos+card_half-vec(5,6),
+ vspr(52,_pos+card_half-vec(4,7),
       1,2)
 end
 
-card1=card:new(5)
+card1=card:new(10,"spade")
 
 -->8
 -- display cards
