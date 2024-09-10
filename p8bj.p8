@@ -66,53 +66,37 @@ end
 -- game state
 
 -- player's hand
-selected_card=0
-held_cards=4
+held_cards=5
 
 -- constants
 card_size=vec(25,35)
 card_half=card_size/2
 card_offset=vec(3,2)
-held_card_offset=card_size.x+2
+held_card_offset=card_size.x-5
 -->8
 -- game loop
 function _init()
 end
 
 function _update()
- update_player_hand()
 end
 
 function _draw()
- cls(5)
+ cls(0)
  draw_player_hand()
 end
 -->8
 -- cards
-function update_player_hand()
- if btnp(0) then
-  selected_card=max(0,selected_card-1)
- end
- if btnp(1) then
-  selected_card=min(held_cards-1,selected_card+1)
- end
-end
-
 function draw_player_hand()
  for i=0,held_cards-1 do
   draw_card(vec(10+i*held_card_offset,
-            128-10-card_size.y),
-            selected_card==i)
+            128-10-card_size.y))
  end
 end
 
 function draw_card(_pos,_outline)
- if not _outline then
-  palt(9,true)
- end
  vspr(0,_pos-card_offset,
       4,5)
- palt(9,false)
 end
 __gfx__
 0000000000000000000000000000000000300000880880000ccc000000a000007700000077700000000000000000000000000000000000000000000000000000
