@@ -4,6 +4,34 @@ __lua__
 -- p8 blackjack
 -- by chloe and clemente
 
+ruleset="casino"
+deck={}
+
+function  _init()
+  deck=create_deck()
+end
+
+function _update()
+end
+
+function _draw()
+
+end
+-->8
+-- card
+
+suits={"s","h","d","c"}
+ranks={"2","3","4","5","6","7","8","9","10","j","q","k","a"}
+
+function create_deck()
+  deck = {}
+  for suit=1,#suits do
+    for rank=1,#ranks do
+      deck[#deck+1]={suits[suit],ranks[rank]}
+    end
+  end
+  return deck
+end
 __gfx__
 0000000000000000000000000000000000300000880880000ccc000000a000007700000077700000000000000000000000000000000000000000000000000000
 0000555555555555555555555550000003330000888880000ccc00000aaa00000700000000700000000000000000000000000000000000000000000000000000
