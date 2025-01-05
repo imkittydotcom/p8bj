@@ -6,11 +6,14 @@ __lua__
 
 ruleset="casino"
 deck={}
+player_hand={}
+dealer_hand={}
 
 function  _init()
   deck=create_deck()
   deck=shuffle(deck)
-  print_card(deal())
+  player_hand={deal(),deal()}
+  dealer_hand={deal()}
 end
 
 function _update()
