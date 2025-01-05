@@ -9,6 +9,10 @@ deck={}
 
 function  _init()
   deck=create_deck()
+  deck=shuffle(deck)
+  for card=1,#deck do
+   print_card(deck[card])
+  end
 end
 
 function _update()
@@ -32,12 +36,16 @@ function create_deck()
   end
   return deck
 end
+
+function print_card(card)
+ print(card[1]..card[2])
+end
 -->8
 -- shuffle
 
 function shuffle(tbl)
   for i = #tbl, 2, -1 do
-    local j = math.random(i)
+    local j = flr(rnd(i)) + 1
     tbl[i], tbl[j] = tbl[j], tbl[i]
   end
   return tbl
