@@ -10,12 +10,11 @@ deck={}
 function  _init()
   deck=create_deck()
   deck=shuffle(deck)
-  for card=1,#deck do
-   print_card(deck[card])
-  end
+  print_card(deal())
 end
 
 function _update()
+
 end
 
 function _draw()
@@ -49,6 +48,14 @@ function shuffle(tbl)
     tbl[i], tbl[j] = tbl[j], tbl[i]
   end
   return tbl
+end
+-->8
+--deal
+
+function deal()
+		draw=deck[#deck]
+		deck[#deck]=nil
+		return draw
 end
 __gfx__
 0000000000000000000000000000000000300000880880000ccc000000a000007700000077700000000000000000000000000000000000000000000000000000
